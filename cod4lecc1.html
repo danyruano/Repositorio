@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1>Factura</h1>
+	<table>
+		<tr>
+			<td>Producto</td>
+			<td>Precio</td>
+			<td>Cantidad</td>
+			<td>Subtotal</td>
+		</tr>
+		<tr>
+			<td>Camisa</td>
+			<td><input type="text" id="l1Precio" value="30000" readonly></td>
+			<td><input type="text" id="l1Cantidad" value="0"></td>
+			<td><input type="text" id="l1Subtotal" readonly></td>
+		</tr>
+		<tr>
+			<td>Gorra</td>
+			<td><input type="text" id="l2Precio" value="50000" readonly></td>
+			<td><input type="text" id="l2Cantidad" value="0"></td>
+			<td><input type="text" id="l2Subtotal" readonly></td>
+		</tr>
+		<tr>
+			<td>Zapatos</td>
+			<td><input type="text" id="l3Precio" value="60000" readonly></td>
+			<td><input type="text" id="l3Cantidad" value="0"></td>
+			<td><input type="text" id="l3Subtotal" readonly></td>
+		</tr>
+		<tr>
+			<td>Pantalon</td>
+			<td><input type="text" id="l4Precio" value="80000" readonly></td>
+			<td><input type="text" id="l4Cantidad" value="0"></td>
+			<td><input type="text" id="l4Subtotal" readonly></td>
+		</tr>
+		<tr>
+			<td colspan="3">TOTAL COMPRA</td>
+			<td><input type="text" id="total" readonly></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td><input type="button" value="Calcular subtotales" onClick="calculaSubtotales()"></td>
+			<td><input type="button" value="Calcular total" onClick="calculaTotal()"></td>
+		</tr>
+	</table>
+</body>
+
+<script type="text/javascript">
+function calculaSubtotales(){
+	//accediendo a los diferentes tipos de elementos
+	var cantidadCamisa= Number(document.getElementById("l1Cantidad").value);
+	var precioCamisa= Number(document.getElementById("l1Precio").value);
+	var cantidadGorra= Number(document.getElementById("l2Cantidad").value);
+	var precioGorra= Number(document.getElementById("l2Precio").value);
+	var cantidadZapato= Number(document.getElementById("l3Cantidad").value);
+	var precioZapato= Number(document.getElementById("l3Precio").value);
+	var cantidadPantalon= Number(document.getElementById("l4Cantidad").value);
+	var precioPantalon= Number(document.getElementById("l4Precio").value);
+	var subtotCamisa= cantidadCamisa * precioCamisa;
+	var subtotGorra= cantidadGorra * precioGorra;
+	var subtotZapato= cantidadZapato * precioZapato;
+	var subtotPantalon= cantidadPantalon * precioPantalon;
+	
+	document.getElementById("l1Subtotal").value= subtotCamisa;
+	document.getElementById("l2Subtotal").value= subtotGorra;
+	document.getElementById("l3Subtotal").value= subtotZapato;
+	document.getElementById("l4Subtotal").value= subtotPantalon;
+}
+
+function calculaTotal(){
+	var subtotCamisa= Number(document.getElementById("l1Subtotal").value);
+	var subtotGorra= Number(document.getElementById("l2Subtotal").value);
+	var subtotZapato= Number(document.getElementById("l3Subtotal").value);
+	var subtotPantalon= Number(document.getElementById("l4Subtotal").value);
+	var total= subtotCamisa + subtotGorra + subtotZapato + subtotPantalon;
+	
+	document.getElementById("total").value= total;
+}
+
+</script>
+</html>
